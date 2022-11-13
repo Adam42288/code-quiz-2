@@ -2,11 +2,12 @@
 const btn = document.getElementById('startbutton');
 const quizHeading = document.getElementById('quiz-heading');
 const startscreen = document.getElementById('startscreen');
+var answerStatus = document.getElementById('answerStatus');
 var timer = document.getElementById('timer');
 var score = 0;
 var count = 75;
 // Set start
-var start = false;
+var start = true;
 
 
 btn.addEventListener('click',() => {
@@ -15,6 +16,7 @@ btn.style.display = 'none';
 quizHeading.style.display = 'none';
 startscreen.style.display = 'none';
 document.getElementById("panel").style.display = "flex";
+answerStatus.style.display = "flex";
 start = true;
 var interval = setInterval(function(){
     document.getElementById('timer').innerHTML='Time: ' + count;
@@ -131,9 +133,11 @@ op1.addEventListener("click", () => {
         result[0].innerHTML = "True";
         result[0].style.color = "green";
         score = score +10;
+        answerStatus.innerHTML='Correct!';
     } else {
         result[0].innerHTML = "False, 10 seconds off the clock!";
         result[0].style.color = "red";
+        answerStatus.innerHTML='Wrong!';
         count = count - 10;
     }
     start = false;
@@ -155,9 +159,11 @@ op2.addEventListener("click", () => {
         result[0].innerHTML = "True";
         result[0].style.color = "green";
         score = score +10;
+        answerStatus.innerHTML='Correct!';
     } else {
         result[0].innerHTML = "False, 10 seconds off the clock!";
         result[0].style.color = "red";
+        answerStatus.innerHTML='Wrong!';
         count = count - 10;
     }
     start = false;
@@ -179,10 +185,12 @@ op3.addEventListener("click", () => {
         result[0].innerHTML = "True";
         result[0].style.color = "green";
         score = score +10;
+        answerStatus.innerHTML='Correct!';
     } else {
         result[0].innerHTML = "False, 10 seconds off the clock!";
         result[0].style.color = "red";
         count = count - 10;
+        answerStatus.innerHTML='Wrong!';
     }
     start = false;
 if (id < 4) {
@@ -203,10 +211,12 @@ op4.addEventListener("click", () => {
         result[0].innerHTML = "True";
         result[0].style.color = "green";
         score = score +10;
+        answerStatus.innerHTML='Correct!';
     } else {
         result[0].innerHTML = "False, 10 seconds off the clock!";
         result[0].style.color = "red";
         count = count - 10;
+        answerStatus.innerHTML='Wrong!';
     }
     start = false;
 if (id < 4) {
@@ -216,20 +226,7 @@ if (id < 4) {
 }
 })
 
-// Grabbing the evaluate button
-const evaluate = document.getElementsByClassName("evaluate");
 
-// Evaluate method
-evaluate[0].addEventListener("click", () => {
-    if (selected == "true") {
-        result[0].innerHTML = "True";
-        result[0].style.color = "green";
-        score = score +10;
-    } else {
-        result[0].innerHTML = "False";
-        result[0].style.color = "red";
-    }
-})
 }
 
 if (start) {

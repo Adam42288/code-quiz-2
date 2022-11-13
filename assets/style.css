@@ -73,7 +73,7 @@ body{
 	background-color:#c7dddf;
 }
 
-.evaluate,.next{
+.answerStatus,.next{
 	width:30vw;
 	height: 8vh;
 	padding: 5px;
@@ -83,4 +83,5 @@ body{
 .answerStatus{
 	color: white;
 	background-color: #BF3325;
+    display:none;
 }
