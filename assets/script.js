@@ -1,15 +1,17 @@
-// // initial variables declared.
-// const btn = document.getElementById('startbutton');
-// const quizHeading = document.getElementById('quiz-heading');
-// const startscreen = document.getElementById('startscreen');
-// const timer = document.getElementById('timer');
+// initial variables declared.
+const btn = document.getElementById('startbutton');
+const quizHeading = document.getElementById('quiz-heading');
+const startscreen = document.getElementById('startscreen');
+const timer = document.getElementById('timer');
 
-// btn.addEventListener('click',() => {
-// // hide button and initial screen when clicking start button.
-// btn.style.display = 'none';
-// quizHeading.style.display = 'none';
-// startscreen.style.display = 'none';
-
+btn.addEventListener('click',() => {
+// hide button and initial screen when clicking start button.
+btn.style.display = 'none';
+quizHeading.style.display = 'none';
+startscreen.style.display = 'none';
+document.getElementById("panel").style.display = "flex";
+}
+)
 
 // var count = 75;
 
