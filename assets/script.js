@@ -11,7 +11,7 @@ btn.style.display = 'none';
 quizHeading.style.display = 'none';
 startscreen.style.display = 'none';
 document.getElementById("panel").style.display = "flex";
-var count = 3;
+var count = 75;
 var interval = setInterval(function(){
     document.getElementById('timer').innerHTML='Time: ' + count;
     count--;
@@ -131,6 +131,15 @@ op1.addEventListener("click", () => {
     op3.style.backgroundColor = "lightskyblue";
     op4.style.backgroundColor = "lightskyblue";
     selected = op1.value;
+    if (selected == "true") {
+        result[0].innerHTML = "True";
+        result[0].style.color = "green";
+        score = score +10;
+    } else {
+        result[0].innerHTML = "False, 10 seconds off the clock!";
+        result[0].style.color = "red";
+        timer = timer - 10;
+    }
 })
 
 // Show selection for op2
@@ -140,6 +149,15 @@ op2.addEventListener("click", () => {
     op3.style.backgroundColor = "lightskyblue";
     op4.style.backgroundColor = "lightskyblue";
     selected = op2.value;
+    if (selected == "true") {
+        result[0].innerHTML = "True";
+        result[0].style.color = "green";
+        score = score +10;
+    } else {
+        result[0].innerHTML = "False, 10 seconds off the clock!";
+        result[0].style.color = "red";
+        timer = timer - 10;
+    }
 })
 
 // Show selection for op3
@@ -149,6 +167,15 @@ op3.addEventListener("click", () => {
     op3.style.backgroundColor = "lightgoldenrodyellow";
     op4.style.backgroundColor = "lightskyblue";
     selected = op3.value;
+    if (selected == "true") {
+        result[0].innerHTML = "True";
+        result[0].style.color = "green";
+        score = score +10;
+    } else {
+        result[0].innerHTML = "False, 10 seconds off the clock!";
+        result[0].style.color = "red";
+        timer = timer - 10;
+    }
 })
 
 // Show selection for op4
@@ -158,6 +185,15 @@ op4.addEventListener("click", () => {
     op3.style.backgroundColor = "lightskyblue";
     op4.style.backgroundColor = "lightgoldenrodyellow";
     selected = op4.value;
+    if (selected == "true") {
+        result[0].innerHTML = "True";
+        result[0].style.color = "green";
+        score = score +10;
+    } else {
+        result[0].innerHTML = "False, 10 seconds off the clock!";
+        result[0].style.color = "red";
+        timer = timer - 10;
+    }
 })
 
 // Grabbing the evaluate button
