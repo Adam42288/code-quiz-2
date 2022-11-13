@@ -1,15 +1,42 @@
-const btn = document.getElementById('startbutton');
 // initial variables declared.
+const btn = document.getElementById('startbutton');
 const quizHeading = document.getElementById('quiz-heading');
 const startscreen = document.getElementById('startscreen');
-
+const timer = document.getElementById('timer');
 
 btn.addEventListener('click',() => {
 // hide button and initial screen when clicking start button.
 btn.style.display = 'none';
 quizHeading.style.display = 'none';
 startscreen.style.display = 'none';
-});
+
+
+var count = 75;
+
+var interval = setInterval(function(){
+document.getElementById('timer').innerHTML='Time: ' + count;
+count--;
+if (count === -1){
+clearInterval(interval);
+document.getElementById('timer').innerHTML="Game over, you're out of time!";
+document.getElementById('quiz').innerHTML ='';
+// or...
+alert("You're out of time!");
+// showResults(questions, quizContainer, resultsContainer);
+                }
+                    }, 1000);
+                    submitButton.onclick = function() {
+                        document.getElementById('timer').innerHTML='';
+                        clearInterval(interval);
+                        document.getElementById('startscreen').innerHTML='All done! answers correct:' + numCorrect;
+                        document.getElementById('quiz').innerHTML ='';
+                    }       
+                    }
+
+);
+
+
+
 
 
 var myQuestions = [
