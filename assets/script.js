@@ -2,8 +2,12 @@
 const btn = document.getElementById('startbutton');
 const quizHeading = document.getElementById('quiz-heading');
 const startscreen = document.getElementById('startscreen');
-const timer = document.getElementById('timer');
+var timer = document.getElementById('timer');
 var score = 0;
+var count = 75;
+// Set start
+var start = false;
+
 
 btn.addEventListener('click',() => {
 // hide button and initial screen when clicking start button.
@@ -11,7 +15,7 @@ btn.style.display = 'none';
 quizHeading.style.display = 'none';
 startscreen.style.display = 'none';
 document.getElementById("panel").style.display = "flex";
-var count = 75;
+start = true;
 var interval = setInterval(function(){
     document.getElementById('timer').innerHTML='Time: ' + count;
     count--;
@@ -23,12 +27,6 @@ var interval = setInterval(function(){
     alert("You're out of time!");
                     }
                         }, 1000);
-                        submitButton.onclick = function() {
-                            document.getElementById('timer').innerHTML='';
-                            clearInterval(interval);
-                            document.getElementById('startscreen').innerHTML='All done! answers correct:' + numCorrect;
-                            document.getElementById('quiz').innerHTML ='';
-                        } 
 }
 )
 
@@ -86,8 +84,6 @@ const Questions = [{
 
 ]
 
-// Set start
-var start = true;
 
 // Iterate
 function iterate(id) {
@@ -138,8 +134,14 @@ op1.addEventListener("click", () => {
     } else {
         result[0].innerHTML = "False, 10 seconds off the clock!";
         result[0].style.color = "red";
-        timer = timer - 10;
+        count = count - 10;
     }
+    start = false;
+if (id < 4) {
+    id++;
+    iterate(id);
+    console.log(id);
+}
 })
 
 // Show selection for op2
@@ -156,8 +158,14 @@ op2.addEventListener("click", () => {
     } else {
         result[0].innerHTML = "False, 10 seconds off the clock!";
         result[0].style.color = "red";
-        timer = timer - 10;
+        count = count - 10;
     }
+    start = false;
+if (id < 4) {
+    id++;
+    iterate(id);
+    console.log(id);
+}
 })
 
 // Show selection for op3
@@ -174,8 +182,14 @@ op3.addEventListener("click", () => {
     } else {
         result[0].innerHTML = "False, 10 seconds off the clock!";
         result[0].style.color = "red";
-        timer = timer - 10;
+        count = count - 10;
     }
+    start = false;
+if (id < 4) {
+    id++;
+    iterate(id);
+    console.log(id);
+}
 })
 
 // Show selection for op4
@@ -192,8 +206,14 @@ op4.addEventListener("click", () => {
     } else {
         result[0].innerHTML = "False, 10 seconds off the clock!";
         result[0].style.color = "red";
-        timer = timer - 10;
+        count = count - 10;
     }
+    start = false;
+if (id < 4) {
+    id++;
+    iterate(id);
+    console.log(id);
+}
 })
 
 // Grabbing the evaluate button
@@ -217,15 +237,15 @@ iterate("0");
 }
 
 // Next button and method
-const next = document.getElementsByClassName('next')[0];
-var id = 0;
+// const next = document.getElementsByClassName('next')[0];
+// var id = 0;
 
-next.addEventListener("click", () => {
-start = false;
-if (id < 4) {
-    id++;
-    iterate(id);
-    console.log(id);
-}
+// next.addEventListener("click", () => {
+// start = false;
+// if (id < 4) {
+//     id++;
+//     iterate(id);
+//     console.log(id);
+// }
 
-})
+// })

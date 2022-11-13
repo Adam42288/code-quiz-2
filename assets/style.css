@@ -79,11 +79,8 @@ body{
 	padding: 5px;
 	font-size: larger;
 }
-.evaluate{
-	
-	background-color: #50DBB4;
-}
-.next{
+
+.answerStatus{
 	color: white;
 	background-color: #BF3325;
 }
