@@ -3,9 +3,11 @@ const btn = document.getElementById('startbutton');
 const quizHeading = document.getElementById('quiz-heading');
 const startscreen = document.getElementById('startscreen');
 var answerStatus = document.getElementById('answerStatus');
+const gameover = document.getElementById('gameover');
+const gameoverscreen = document.getElementById('gameoverscreen');
 var timer = document.getElementById('timer');
 var score = 0;
-var count = 75;
+var count = 500;
 var id = 0;
 // Set start
 var start = true;
@@ -17,7 +19,6 @@ btn.style.display = 'none';
 quizHeading.style.display = 'none';
 startscreen.style.display = 'none';
 document.getElementById("panel").style.display = "flex";
-answerStatus.style.display = "flex";
 start = true;
 var interval = setInterval(function(){
     document.getElementById('timer').innerHTML='Time: ' + count;
@@ -29,6 +30,7 @@ var interval = setInterval(function(){
     // or...
     // alert("You're out of time!");
                     }
+
                         }, 1000);
 }
 )
@@ -83,6 +85,9 @@ const Questions = [{
         { text: "for loops", isCorrect: false },
         { text: "console.log", isCorrect: true }
     ]
+},
+{
+    id:5
 }
 
 ]
@@ -110,6 +115,7 @@ const op4 = document.getElementById('op4');
 
 
 // Providing answer text
+if (id <= 4) {
 op1.innerText = Questions[id].a[0].text;
 op2.innerText = Questions[id].a[1].text;
 op3.innerText = Questions[id].a[2].text;
@@ -120,7 +126,7 @@ op1.value = Questions[id].a[0].isCorrect;
 op2.value = Questions[id].a[1].isCorrect;
 op3.value = Questions[id].a[2].isCorrect;
 op4.value = Questions[id].a[3].isCorrect;
-
+}
 var selected = "";
 
 // Show selection for op1
@@ -135,13 +141,13 @@ op1.addEventListener("click", () => {
         result[0].style.color = "green";
         score = score +10;
     } else {
-        result[0].innerHTML = "False, 10 seconds off the clock!";
+        result[0].innerHTML = "Incorrect, 10 seconds off the clock!";
         result[0].style.color = "red";
         count = count - 10;
     }
     start = false;
 
-if (id < 4) {
+if (id < 5) {
     id++;
     iterate(id);
     console.log(id);
@@ -165,7 +171,7 @@ op2.addEventListener("click", () => {
         count = count - 10;
     }
     start = false;
-if (id < 4) {
+if (id < 5) {
     id++;
     iterate(id);
     console.log(id);
@@ -191,7 +197,7 @@ op3.addEventListener("click", () => {
         console.log('this is wrong');
     }
     start = false;
-if (id < 4) {
+if (id < 5) {
     id++;
     iterate(id);
     console.log(id);
@@ -215,18 +221,21 @@ op4.addEventListener("click", () => {
         count = count - 10;
     }
     start = false;
-if (id < 4) {
+if (id < 5) {
     id++;
     iterate(id);
     console.log(id);
 }
 })
 
-if (id >= 4) {
+if (id === 5) {
 
-    document.getElementById('timer').innerHTML="All done! Your final score is " + score;
     timer.style.display = "none";
     document.getElementById('panel').style.display = "none";
+    gameoverscreen.style.display = "flex";
+    console.log('you made it to ID 5');
+    gameover.innerHTML="All done! Your final score is " + score + ".";
+    // add a game over screen and make it display here
 
 }
 

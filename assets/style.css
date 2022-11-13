@@ -73,15 +73,6 @@ body{
 	background-color:#c7dddf;
 }
 
-.answerStatus,.next{
-	width:30vw;
-	height: 8vh;
-	padding: 5px;
-	font-size: larger;
-}
-
-.answerStatus{
-	color: white;
-	background-color: #BF3325;
+.gameoverscreen{
     display:none;
 }
