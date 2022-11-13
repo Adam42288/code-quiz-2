@@ -1,8 +1,14 @@
 const btn = document.getElementById('startbutton');
+// initial variables declared.
+const quizHeading = document.getElementById('quiz-heading');
+const startscreen = document.getElementById('startscreen');
+
 
 btn.addEventListener('click',() => {
-// hide button
+// hide button and initial screen when clicking start button.
 btn.style.display = 'none';
+quizHeading.style.display = 'none';
+startscreen.style.display = 'none';
 });
 
 
