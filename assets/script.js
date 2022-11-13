@@ -13,29 +13,32 @@ document.getElementById("panel").style.display = "flex";
 }
 )
 
-// var count = 75;
-
-// var interval = setInterval(function(){
-// document.getElementById('timer').innerHTML='Time: ' + count;
-// count--;
-// if (count === -1){
-// clearInterval(interval);
-// document.getElementById('timer').innerHTML="Game over, you're out of time!";
-// document.getElementById('quiz').innerHTML ='';
-// // or...
-// alert("You're out of time!");
-// // showResults(questions, quizContainer, resultsContainer);
-//                 }
-//                     }, 1000);
-//                     submitButton.onclick = function() {
-//                         document.getElementById('timer').innerHTML='';
-//                         clearInterval(interval);
-//                         document.getElementById('startscreen').innerHTML='All done! answers correct:' + numCorrect;
-//                         document.getElementById('quiz').innerHTML ='';
-//                     }       
-//                     }
-
-// );
+    // When user clicks on the start button, start the timer and display questions.
+    startButton.onclick = function() {
+        // adding a timer.
+        document.getElementById('startscreen').innerHTML='';
+        var count = 75;
+        generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);  
+        var interval = setInterval(function(){
+        document.getElementById('timer').innerHTML='Time: ' + count;
+        count--;
+        if (count === -1){
+        clearInterval(interval);
+        document.getElementById('timer').innerHTML="Game over, you're out of time!";
+        document.getElementById('quiz').innerHTML ='';
+        // or...
+        alert("You're out of time!");
+       // showResults(questions, quizContainer, resultsContainer);
+                        }
+                            }, 1000);
+                            submitButton.onclick = function() {
+                                document.getElementById('timer').innerHTML='';
+                                clearInterval(interval);
+                                document.getElementById('startscreen').innerHTML='All done! answers correct:' + numCorrect;
+                                document.getElementById('quiz').innerHTML ='';
+                            }       
+                            }
+                            
 
 
 
@@ -95,6 +98,7 @@ document.getElementById("panel").style.display = "flex";
 // ];
 
 // Questions will be asked
+
 const Questions = [{
     id: 0,
     q: "Commonly used data types DO Not Include: ",
