@@ -6,6 +6,7 @@ var answerStatus = document.getElementById('answerStatus');
 var timer = document.getElementById('timer');
 var score = 0;
 var count = 75;
+var id = 0;
 // Set start
 var start = true;
 
@@ -21,12 +22,12 @@ start = true;
 var interval = setInterval(function(){
     document.getElementById('timer').innerHTML='Time: ' + count;
     count--;
-    if (count === -1){
+    if (count <= 0){
     clearInterval(interval);
     document.getElementById('timer').innerHTML="All done! Your final score is " + score;
     document.getElementById('panel').style.display = "none";
     // or...
-    alert("You're out of time!");
+    // alert("You're out of time!");
                     }
                         }, 1000);
 }
@@ -49,7 +50,7 @@ const Questions = [{
 {
     id: 1,
     q: "The condition in an if / else statement is enclosed with: ",
-    a: [{ text: "quotes", isCorrect: false, isSelected: false },
+    a: [{ text: "quotes", isCorrect: false },
         { text: "curly brackets", isCorrect: false },
         { text: "parenthesis", isCorrect: true },
         { text: "square brackets", isCorrect: false }
@@ -92,7 +93,7 @@ function iterate(id) {
 
 // Getting the result display section
 var result = document.getElementsByClassName("result");
-result[0].innerText = "";
+result[0].innerText = "Test";
 
 // Getting the question
 const question = document.getElementById("question");
@@ -133,14 +134,13 @@ op1.addEventListener("click", () => {
         result[0].innerHTML = "True";
         result[0].style.color = "green";
         score = score +10;
-        answerStatus.innerHTML='Correct!';
     } else {
         result[0].innerHTML = "False, 10 seconds off the clock!";
         result[0].style.color = "red";
-        answerStatus.innerHTML='Wrong!';
         count = count - 10;
     }
     start = false;
+
 if (id < 4) {
     id++;
     iterate(id);
@@ -159,11 +159,9 @@ op2.addEventListener("click", () => {
         result[0].innerHTML = "True";
         result[0].style.color = "green";
         score = score +10;
-        answerStatus.innerHTML='Correct!';
     } else {
         result[0].innerHTML = "False, 10 seconds off the clock!";
         result[0].style.color = "red";
-        answerStatus.innerHTML='Wrong!';
         count = count - 10;
     }
     start = false;
@@ -185,12 +183,12 @@ op3.addEventListener("click", () => {
         result[0].innerHTML = "True";
         result[0].style.color = "green";
         score = score +10;
-        answerStatus.innerHTML='Correct!';
+        console.log('this is right');
     } else {
         result[0].innerHTML = "False, 10 seconds off the clock!";
         result[0].style.color = "red";
         count = count - 10;
-        answerStatus.innerHTML='Wrong!';
+        console.log('this is wrong');
     }
     start = false;
 if (id < 4) {
@@ -211,12 +209,10 @@ op4.addEventListener("click", () => {
         result[0].innerHTML = "True";
         result[0].style.color = "green";
         score = score +10;
-        answerStatus.innerHTML='Correct!';
     } else {
         result[0].innerHTML = "False, 10 seconds off the clock!";
         result[0].style.color = "red";
         count = count - 10;
-        answerStatus.innerHTML='Wrong!';
     }
     start = false;
 if (id < 4) {
@@ -226,12 +222,21 @@ if (id < 4) {
 }
 })
 
+if (id >= 4) {
+
+    document.getElementById('timer').innerHTML="All done! Your final score is " + score;
+    timer.style.display = "none";
+    document.getElementById('panel').style.display = "none";
+
+}
 
 }
 
 if (start) {
 iterate("0");
 }
+
+
 
 // Next button and method
 // const next = document.getElementsByClassName('next')[0];
