@@ -21,8 +21,6 @@ var op3 = document.getElementById('op3');
 var op4 = document.getElementById('op4');
 
 
-
-
 btn.addEventListener('click',() => {
 // hide button and initial screen when clicking start button.
 btn.style.display = 'none';
@@ -37,7 +35,7 @@ var interval = setInterval(function(){
     clearInterval(interval);
     timer.innerHTML="";
     gameoverscreen.style.display = "block";
-    document.getElementById('finalscoretext').innerHTML="All done! Your final score is: " + score + "! ";
+    gameovertext.innerHTML="All done! Your final score is: " + score + "! ";
     document.getElementById('panel').style.display = "none";
     // or...
     // alert("You're out of time!");
@@ -46,8 +44,6 @@ var interval = setInterval(function(){
                         }, 1000);
 }
 )
-
-
 
 // Questions will be asked
 
@@ -246,3 +242,18 @@ op4.addEventListener("click", () => {
     }
 })
 
+
+// Adding variables and function for saving high scores to local storage.
+var scoreForm = document.getElementById("initial-form");
+var initialinput = document.getElementById('initial-input');
+var initialSubmit = document.getElementById('initial-submit');
+
+let scoreStorage = localStorage.getItem("scores")
+  ? JSON.parse(localStorage.getItem("scores"))
+  : [];
+
+  scoreForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    window.localStorage.setItem(initialinput.value, score);
+    initialinput.value = "";
+  });
