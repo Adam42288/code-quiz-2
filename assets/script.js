@@ -163,12 +163,6 @@ if (id < 5) {
     iterate(id);
     console.log(id);
     gameoverman();
-} else {
-        timer.style.display = "none";
-        document.getElementById('panel').style.display = "none";
-        gameoverscreen.style.display = "flex";
-        console.log('you made it to ID 5');
-        gameover.innerHTML="All done! Your final score is " + score + "."; 
 }
 })
 
@@ -190,18 +184,12 @@ op2.addEventListener("click", () => {
         console.log('incorrect');
         count = count - 10;
     }
-if (id < 5) {
-    id++;
-    iterate(id);
-    console.log(id);
-}
-else {
-    timer.style.display = "none";
-    document.getElementById('panel').style.display = "none";
-    gameoverscreen.style.display = "flex";
-    console.log('you made it to ID 5');
-    gameover.innerHTML="All done! Your final score is " + score + "."; 
-}
+    if (id < 5) {
+        id++;
+        iterate(id);
+        console.log(id);
+        gameoverman();
+    }
 })
 
 // Show selection for op3
@@ -224,18 +212,12 @@ op3.addEventListener("click", () => {
         count = count - 10;
     }
 
-if (id < 5) {
-    id++;
-    iterate(id);
-    console.log(id);
-}
-else {
-    timer.style.display = "none";
-    document.getElementById('panel').style.display = "none";
-    gameoverscreen.style.display = "flex";
-    console.log('you made it to ID 5');
-    gameover.innerHTML="All done! Your final score is " + score + "."; 
-}
+    if (id < 5) {
+        id++;
+        iterate(id);
+        console.log(id);
+        gameoverman();
+    }
 })
 
 // Show selection for op4
@@ -256,19 +238,11 @@ op4.addEventListener("click", () => {
         console.log('incorrect');
         count = count - 10;
     }
-if (id < 5) {
-    id++;
-    iterate(id);
-    console.log(id);
-
-}
-else {
-    timer.style.display = "none";
-    document.getElementById('panel').style.display = "none";
-    console.log()
-    gameoverscreen.style.display = "flex";
-    console.log('you made it to ID 5');
-    gameover.innerHTML="All done! Your final score is " + score + "."; 
-}
+    if (id < 5) {
+        id++;
+        iterate(id);
+        console.log(id);
+        gameoverman();
+    }
 })
 
