@@ -5,12 +5,21 @@ const startscreen = document.getElementById('startscreen');
 var answerStatus = document.getElementById('answerStatus');
 const gameover = document.getElementById('gameover');
 const gameoverscreen = document.getElementById('gameoverscreen');
+var result = document.getElementById("result");
 var timer = document.getElementById('timer');
 var score = 0;
 var count = 500;
 var id = 0;
-// Set start
-var start = true;
+// Getting the question
+const question = document.getElementById("question");
+
+// Getting the answers
+var op1 = document.getElementById('op1');
+var op2 = document.getElementById('op2');
+var op3 = document.getElementById('op3');
+var op4 = document.getElementById('op4');
+
+
 
 
 btn.addEventListener('click',() => {
@@ -19,7 +28,7 @@ btn.style.display = 'none';
 quizHeading.style.display = 'none';
 startscreen.style.display = 'none';
 document.getElementById("panel").style.display = "flex";
-start = true;
+iterate();
 var interval = setInterval(function(){
     document.getElementById('timer').innerHTML='Time: ' + count;
     count--;
@@ -94,24 +103,14 @@ const Questions = [{
 
 
 // Iterate
-function iterate(id) {
+function iterate() {
 
 // Getting the result display section
-var result = document.getElementsByClassName("result");
-result[0].innerText = "Test";
 
-// Getting the question
-const question = document.getElementById("question");
 
 
 // Setting the question text
 question.innerText = Questions[id].q;
-
-// Getting the answers
-const op1 = document.getElementById('op1');
-const op2 = document.getElementById('op2');
-const op3 = document.getElementById('op3');
-const op4 = document.getElementById('op4');
 
 
 // Providing answer text
@@ -128,6 +127,8 @@ op3.value = Questions[id].a[2].isCorrect;
 op4.value = Questions[id].a[3].isCorrect;
 }
 var selected = "";
+console.log(op1, op2, op3, op4);
+}
 
 // Show selection for op1
 op1.addEventListener("click", () => {
@@ -136,21 +137,29 @@ op1.addEventListener("click", () => {
     op3.style.backgroundColor = "lightskyblue";
     op4.style.backgroundColor = "lightskyblue";
     selected = op1.value;
-    if (selected == "true") {
-        result[0].innerHTML = "True";
-        result[0].style.color = "green";
+    if (op1.value === "true") {
+        result.innerHTML = "True";
+        result.style.color = "green";
+        console.log('correct');
         score = score +10;
     } else {
-        result[0].innerHTML = "Incorrect, 10 seconds off the clock!";
-        result[0].style.color = "red";
+        result.innerHTML = "Incorrect, 10 seconds off the clock!";
+        result.style.color = "red";
+        console.log('incorrect');
         count = count - 10;
     }
-    start = false;
 
 if (id < 5) {
     id++;
     iterate(id);
     console.log(id);
+}
+else {
+        timer.style.display = "none";
+        document.getElementById('panel').style.display = "none";
+        gameoverscreen.style.display = "flex";
+        console.log('you made it to ID 5');
+        gameover.innerHTML="All done! Your final score is " + score + "."; 
 }
 })
 
@@ -161,20 +170,28 @@ op2.addEventListener("click", () => {
     op3.style.backgroundColor = "lightskyblue";
     op4.style.backgroundColor = "lightskyblue";
     selected = op2.value;
-    if (selected == "true") {
-        result[0].innerHTML = "True";
-        result[0].style.color = "green";
+    if (op2.value === "true") {
+        result.innerHTML = "True";
+        result.style.color = "green";
+        console.log('correct');
         score = score +10;
     } else {
-        result[0].innerHTML = "False, 10 seconds off the clock!";
-        result[0].style.color = "red";
+        result.innerHTML = "Incorrect, 10 seconds off the clock!";
+        result.style.color = "red";
+        console.log('incorrect');
         count = count - 10;
     }
-    start = false;
 if (id < 5) {
     id++;
     iterate(id);
     console.log(id);
+}
+else {
+    timer.style.display = "none";
+    document.getElementById('panel').style.display = "none";
+    gameoverscreen.style.display = "flex";
+    console.log('you made it to ID 5');
+    gameover.innerHTML="All done! Your final score is " + score + "."; 
 }
 })
 
@@ -185,22 +202,30 @@ op3.addEventListener("click", () => {
     op3.style.backgroundColor = "lightgoldenrodyellow";
     op4.style.backgroundColor = "lightskyblue";
     selected = op3.value;
-    if (selected == "true") {
-        result[0].innerHTML = "True";
-        result[0].style.color = "green";
+    console.log(op3.value);
+    if (op3.value === "true") {
+        result.innerHTML = "True";
+        result.style.color = "green";
+        console.log('correct');
         score = score +10;
-        console.log('this is right');
     } else {
-        result[0].innerHTML = "False, 10 seconds off the clock!";
-        result[0].style.color = "red";
+        result.innerHTML = "Incorrect, 10 seconds off the clock!";
+        result.style.color = "red";
+        console.log('incorrect');
         count = count - 10;
-        console.log('this is wrong');
     }
-    start = false;
+
 if (id < 5) {
     id++;
     iterate(id);
     console.log(id);
+}
+else {
+    timer.style.display = "none";
+    document.getElementById('panel').style.display = "none";
+    gameoverscreen.style.display = "flex";
+    console.log('you made it to ID 5');
+    gameover.innerHTML="All done! Your final score is " + score + "."; 
 }
 })
 
@@ -211,52 +236,30 @@ op4.addEventListener("click", () => {
     op3.style.backgroundColor = "lightskyblue";
     op4.style.backgroundColor = "lightgoldenrodyellow";
     selected = op4.value;
-    if (selected == "true") {
-        result[0].innerHTML = "True";
-        result[0].style.color = "green";
+    if (op4.value === "true") {
+        result.innerHTML = "True";
+        result.style.color = "green";
+        console.log('correct');
         score = score +10;
     } else {
-        result[0].innerHTML = "False, 10 seconds off the clock!";
-        result[0].style.color = "red";
+        result.innerHTML = "Incorrect, 10 seconds off the clock!";
+        result.style.color = "red";
+        console.log('incorrect');
         count = count - 10;
     }
-    start = false;
 if (id < 5) {
     id++;
     iterate(id);
     console.log(id);
+
+}
+else {
+    timer.style.display = "none";
+    document.getElementById('panel').style.display = "none";
+    console.log()
+    gameoverscreen.style.display = "flex";
+    console.log('you made it to ID 5');
+    gameover.innerHTML="All done! Your final score is " + score + "."; 
 }
 })
 
-if (id === 5) {
-
-    timer.style.display = "none";
-    document.getElementById('panel').style.display = "none";
-    gameoverscreen.style.display = "flex";
-    console.log('you made it to ID 5');
-    gameover.innerHTML="All done! Your final score is " + score + ".";
-    // add a game over screen and make it display here
-
-}
-
-}
-
-if (start) {
-iterate("0");
-}
-
-
-
-// Next button and method
-// const next = document.getElementsByClassName('next')[0];
-// var id = 0;
-
-// next.addEventListener("click", () => {
-// start = false;
-// if (id < 4) {
-//     id++;
-//     iterate(id);
-//     console.log(id);
-// }
-
-// })
