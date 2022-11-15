@@ -8,7 +8,7 @@ const gameoverscreen = document.getElementById('gameoverscreen');
 var result = document.getElementById("result");
 var timer = document.getElementById('timer');
 var score = 0;
-var count = 500;
+var count = 75;
 var id = 0;
 // Getting the question
 const question = document.getElementById("question");
@@ -101,7 +101,16 @@ const Questions = [{
 
 ]
 
-
+// Function to show the results screen once all questions have been asked.
+function gameoverman() {
+    if (id === 5){ 
+    timer.style.display = "none";
+    document.getElementById('panel').style.display = "none";
+    gameoverscreen.style.display = "flex";
+    console.log('you made it to ID 5');
+    gameover.innerHTML="All done! Your final score is " + score + "."; 
+}
+}
 // Iterate
 function iterate() {
 
@@ -153,8 +162,8 @@ if (id < 5) {
     id++;
     iterate(id);
     console.log(id);
-}
-else {
+    gameoverman();
+} else {
         timer.style.display = "none";
         document.getElementById('panel').style.display = "none";
         gameoverscreen.style.display = "flex";
