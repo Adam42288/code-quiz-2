@@ -21,10 +21,13 @@
 
         <div class="gameoverscreen" id="gameoverscreen">
         <div id="gameover"></div>
-
-        <div class="highscore">
-            <p></p> Enter initials: </div>
-        <button class="initials"></button>
+        <div class="highscore"></div>
+        <p id="finalscoretext"></p>
+        <form id="frm1" action="/action_page.php">
+            <p></p>
+            Enter initials: <input type="text" name="fname"><br>
+            <input type="button" onclick="myFunction()" value="Submit">
+          </form>
         </div>
         
         <!--Test code goes here-->

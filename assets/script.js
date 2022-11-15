@@ -7,6 +7,7 @@ const gameover = document.getElementById('gameover');
 const gameoverscreen = document.getElementById('gameoverscreen');
 var result = document.getElementById("result");
 var timer = document.getElementById('timer');
+var gameovertext = document.getElementById("finalscoretext");
 var score = 0;
 var count = 75;
 var id = 0;
@@ -30,11 +31,13 @@ startscreen.style.display = 'none';
 document.getElementById("panel").style.display = "flex";
 iterate();
 var interval = setInterval(function(){
-    document.getElementById('timer').innerHTML='Time: ' + count;
+    timer.innerHTML='Time: ' + count;
     count--;
     if (count <= 0){
     clearInterval(interval);
-    document.getElementById('timer').innerHTML="All done! Your final score is " + score;
+    timer.innerHTML="";
+    gameoverscreen.style.display = "block";
+    document.getElementById('finalscoretext').innerHTML="All done! Your final score is: " + score + "! ";
     document.getElementById('panel').style.display = "none";
     // or...
     // alert("You're out of time!");
@@ -106,19 +109,16 @@ function gameoverman() {
     if (id === 5){ 
     timer.style.display = "none";
     document.getElementById('panel').style.display = "none";
-    gameoverscreen.style.display = "flex";
+    gameoverscreen.style.display = "block";
     console.log('you made it to ID 5');
-    gameover.innerHTML="All done! Your final score is " + score + "."; 
+    timer.innerHTML="";
+    gameovertext.innerHTML="All done! Your final score is: " + score + "! ";
 }
 }
 // Iterate
 function iterate() {
 
-// Getting the result display section
-
-
-
-// Setting the question text
+    // Setting the question text
 question.innerText = Questions[id].q;
 
 

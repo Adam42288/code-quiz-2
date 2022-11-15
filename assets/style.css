@@ -76,3 +76,7 @@ body{
 .gameoverscreen{
     display:none;
 }
+
+.highscore{
+	display:none;
+}
