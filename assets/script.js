@@ -269,13 +269,35 @@ let scoreStorage = window.localStorage.getItem("scores")
   ? JSON.parse(window.localStorage.getItem("scores"))
   : [];
 
+  
   scoreForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    window.localStorage.setItem(initialinput.value, score);
-    initialinput.value = "";
     gameoverscreen.style.display = "none";
     highscorescreen.style.display = 'flex';
-    console.log(window.localStorage.length);
+    var nameScore = {
+        initials: initialinput.value,
+        score: score,
+      };
+    var nameScoreStr = JSON.stringify(nameScore);
+    const scorelist1 = JSON.parse(localStorage.getItem("nameScore"));
+      scorelist1.push(nameScore);
+    //var lastGrade = JSON.parse(localStorage.getItem("nameScore"));
+    //scoreStorage.push(nameScoreStr);
+    localStorage.setItem("nameScore", JSON.stringify(nameScoreStr));
+      renderMessage();
+      
+      });
+      
+      function renderMessage() {
+        var lastGrade = JSON.parse(localStorage.getItem("nameScore"));
+        if (lastGrade !== null) {
+            var entry = document.createElement('li');
+            entry.appendChild(document.createTextNode(lastGrade.initials + ": " + lastGrade.score));
+            listscores.appendChild(entry);
+        }
+      }
+      
+
 
 // create object, stringify it, set that in local storage
 // to add to it, pull the object out window.localstorage.getItem('scores')
@@ -285,19 +307,20 @@ let scoreStorage = window.localStorage.getItem("scores")
 
 // before you set you have to GET and then add to it
 
-    for(var i in window.localStorage) {
-        var name = i;
-        var score1 = window.localStorage[i];
-        var entry = document.createElement('li');
-        entry.appendChild(document.createTextNode(name + ': ' + score1));
-        listscores.appendChild(entry);
-    }
+
+    // for(var i in scoreStorage) {
+    //     var name = i;
+    //     var score1 = window.localStorage[i];
+    //     var entry = document.createElement('li');
+    //     entry.appendChild(document.createTextNode(name + ': ' + score1));
+    //     listscores.appendChild(entry);
+    // }
 //    var firstname = document.getElementById('firstname').value;
 //var entry = document.createElement('li');
 // entry.appendChild(document.createTextNode(firstname));
 // list.appendChild(entry);
 
-  });
+//  });
 
   clearscores.addEventListener('click', () => {
     window.localStorage.clear();
