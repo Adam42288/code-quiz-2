@@ -30,3 +30,4 @@ Scre Screen
 ![score screen](./assets/images/scores.png)
 
 ## URL of deployed website
+https://adam42288.github.io/code-quiz-2/
