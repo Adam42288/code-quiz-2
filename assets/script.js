@@ -5,14 +5,18 @@ const startscreen = document.getElementById('startscreen');
 var answerStatus = document.getElementById('answerStatus');
 const gameover = document.getElementById('gameover');
 const gameoverscreen = document.getElementById('gameoverscreen');
+const highscorescreen = document.getElementById('highscorescreen');
 var result = document.getElementById("result");
 var timer = document.getElementById('timer');
 var gameovertext = document.getElementById("finalscoretext");
 var score = 0;
 var count = 75;
 var id = 0;
+var clearscores = document.getElementById('clear-scores');
+var goback = document.getElementById('go-back');
 // Getting the question
 const question = document.getElementById("question");
+var interval;
 
 // Getting the answers
 var op1 = document.getElementById('op1');
@@ -28,22 +32,30 @@ quizHeading.style.display = 'none';
 startscreen.style.display = 'none';
 document.getElementById("panel").style.display = "flex";
 iterate();
-var interval = setInterval(function(){
-    timer.innerHTML='Time: ' + count;
-    count--;
-    if (count <= 0){
-    clearInterval(interval);
-    timer.innerHTML="";
-    gameoverscreen.style.display = "block";
-    gameovertext.innerHTML="All done! Your final score is: " + score + "! ";
-    document.getElementById('panel').style.display = "none";
-    // or...
-    // alert("You're out of time!");
-                    }
-
-                        }, 1000);
+timerApp();
 }
 )
+
+
+// Putting the timer into its own function for easier calling.
+function timerApp() {
+    interval = setInterval(function(){
+        timer.innerHTML='Time: ' + count;
+        count--;
+        console.log(count);
+        if (count <= 0){
+        clearInterval(interval);
+        timer.innerHTML="";
+        gameoverscreen.style.display = "block";
+        gameovertext.innerHTML="All done! Your final score is: " + score + "! ";
+        document.getElementById('panel').style.display = "none";
+ 
+        // or...
+        // alert("You're out of time!");
+                        }
+    
+                            }, 1000);
+}
 
 // Questions will be asked
 
@@ -100,7 +112,7 @@ const Questions = [{
 
 ]
 
-// Function to show the results screen once all questions have been asked.
+// Function to show the results screen once all questions have been asked and stop the timer.
 function gameoverman() {
     if (id === 5){ 
     timer.style.display = "none";
@@ -109,6 +121,11 @@ function gameoverman() {
     console.log('you made it to ID 5');
     timer.innerHTML="";
     gameovertext.innerHTML="All done! Your final score is: " + score + "! ";
+    function stop() {
+        clearInterval(interval);
+        interval = null;
+    }
+    stop();
 }
 }
 // Iterate
@@ -132,7 +149,6 @@ op3.value = Questions[id].a[2].isCorrect;
 op4.value = Questions[id].a[3].isCorrect;
 }
 var selected = "";
-console.log(op1, op2, op3, op4);
 }
 
 // Show selection for op1
@@ -256,4 +272,14 @@ let scoreStorage = localStorage.getItem("scores")
     e.preventDefault();
     window.localStorage.setItem(initialinput.value, score);
     initialinput.value = "";
+    gameoverscreen.style.display = "none";
+    highscorescreen.style.display = 'flex';
   });
+
+  clearscores.addEventListener('click', () => {
+    localStorage.clear();
+  })
+
+  goback.addEventListener('click', () => {
+
+  })
