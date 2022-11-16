@@ -264,55 +264,40 @@ op4.addEventListener("click", () => {
 var scoreForm = document.getElementById("initial-form");
 var initialinput = document.getElementById('initial-input');
 var initialSubmit = document.getElementById('initial-submit');
+var scoreStorage = window.localStorage.getItem("Scores")
+? JSON.parse(window.localStorage.getItem("Scores"))
+: [];
 
-let scoreStorage = window.localStorage.getItem("scores")
-  ? JSON.parse(window.localStorage.getItem("scores"))
-  : [];
-
-  
   scoreForm.addEventListener("submit", (e) => {
     e.preventDefault();
     gameoverscreen.style.display = "none";
     highscorescreen.style.display = 'flex';
-    var nameScore = {
-        initials: initialinput.value,
-        score: score,
+  
+    var newScore = {
+        "Initials": initialinput.value,
+        "Score": score,
       };
-    var nameScoreStr = JSON.stringify(nameScore);
-    const scorelist1 = JSON.parse(localStorage.getItem("nameScore"));
-      
-    //var lastGrade = JSON.parse(localStorage.getItem("nameScore"));
-      
-      //scoreStorage.push(nameScoreStr);
+    
+    scoreStorage.push(newScore);
+    localStorage.setItem("Scores", JSON.stringify(scoreStorage));
+    console.log(scoreStorage);
 
-      localStorage.setItem("nameScore", JSON.stringify(nameScore));
-      renderMessage();
-      
+    for (var i = 0; i < scoreStorage.length; i++) {
+        var name = scoreStorage[i].Initials;
+        var score1 = scoreStorage[i].Score;
+        var entry = document.createElement('li');
+        entry.appendChild(document.createTextNode(name + ': ' + score1));
+        listscores.appendChild(entry);
+    }
+    
       });
       
-      function renderMessage() {
-        var lastGrade = JSON.parse(localStorage.getItem("nameScore"));
-        if (lastGrade !== null) {
-            var entry = document.createElement('li');
-            entry.appendChild(document.createTextNode(lastGrade.initials + ": " + lastGrade.score));
-            listscores.appendChild(entry);
-        }
-      }
       
-
-
-// create object, stringify it, set that in local storage
-// to add to it, pull the object out window.localstorage.getItem('scores')
-// parse it with json.parse, then add the new property to the javascript object 'scores'
-// then stringify it again and set it back in local storage.
-// then you would just be looping through window.localstorage.getItem('scores') and you'd have to parse that as well.
-
-// before you set you have to GET and then add to it
 
 
     // for(var i in scoreStorage) {
-    //     var name = i;
-    //     var score1 = window.localStorage[i];
+    //     var name = scoreStorage[i].Initials;
+    //     var score1 = scoreStorage[i].Score;
     //     var entry = document.createElement('li');
     //     entry.appendChild(document.createTextNode(name + ': ' + score1));
     //     listscores.appendChild(entry);
