@@ -277,7 +277,13 @@ let scoreStorage = window.localStorage.getItem("scores")
     highscorescreen.style.display = 'flex';
     console.log(window.localStorage.length);
 
+// create object, stringify it, set that in local storage
+// to add to it, pull the object out window.localstorage.getItem('scores')
+// parse it with json.parse, then add the new property to the javascript object 'scores'
+// then stringify it again and set it back in local storage.
+// then you would just be looping through window.localstorage.getItem('scores') and you'd have to parse that as well.
 
+// before you set you have to GET and then add to it
 
     for(var i in window.localStorage) {
         var name = i;
