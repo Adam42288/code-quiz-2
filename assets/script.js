@@ -280,13 +280,24 @@ let scoreStorage = window.localStorage.getItem("scores")
       };
     var nameScoreStr = JSON.stringify(nameScore);
     const scorelist1 = JSON.parse(localStorage.getItem("nameScore"));
-      scorelist1.push(nameScore);
+      
     //var lastGrade = JSON.parse(localStorage.getItem("nameScore"));
-    //scoreStorage.push(nameScoreStr);
-    localStorage.setItem("nameScore", JSON.stringify(nameScoreStr));
+      
+      //scoreStorage.push(nameScoreStr);
+
+      localStorage.setItem("nameScore", JSON.stringify(nameScore));
       renderMessage();
       
       });
+      
+      function renderMessage() {
+        var lastGrade = JSON.parse(localStorage.getItem("nameScore"));
+        if (lastGrade !== null) {
+            var entry = document.createElement('li');
+            entry.appendChild(document.createTextNode(lastGrade.initials + ": " + lastGrade.score));
+            listscores.appendChild(entry);
+        }
+      }
       
 
 
