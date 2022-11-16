@@ -288,15 +288,6 @@ let scoreStorage = window.localStorage.getItem("scores")
       
       });
       
-      function renderMessage() {
-        var lastGrade = JSON.parse(localStorage.getItem("nameScore"));
-        if (lastGrade !== null) {
-            var entry = document.createElement('li');
-            entry.appendChild(document.createTextNode(lastGrade.initials + ": " + lastGrade.score));
-            listscores.appendChild(entry);
-        }
-      }
-      
 
 
 // create object, stringify it, set that in local storage
