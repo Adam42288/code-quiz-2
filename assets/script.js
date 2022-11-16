@@ -17,6 +17,7 @@ var goback = document.getElementById('go-back');
 // Getting the question
 const question = document.getElementById("question");
 var interval;
+var scorelist = document.getElementById('listscores');
 
 // Getting the answers
 var op1 = document.getElementById('op1');
@@ -31,8 +32,8 @@ btn.style.display = 'none';
 quizHeading.style.display = 'none';
 startscreen.style.display = 'none';
 document.getElementById("panel").style.display = "flex";
-iterate();
 timerApp();
+iterate();
 }
 )
 
@@ -264,8 +265,8 @@ var scoreForm = document.getElementById("initial-form");
 var initialinput = document.getElementById('initial-input');
 var initialSubmit = document.getElementById('initial-submit');
 
-let scoreStorage = localStorage.getItem("scores")
-  ? JSON.parse(localStorage.getItem("scores"))
+let scoreStorage = window.localStorage.getItem("scores")
+  ? JSON.parse(window.localStorage.getItem("scores"))
   : [];
 
   scoreForm.addEventListener("submit", (e) => {
@@ -274,10 +275,26 @@ let scoreStorage = localStorage.getItem("scores")
     initialinput.value = "";
     gameoverscreen.style.display = "none";
     highscorescreen.style.display = 'flex';
+    console.log(window.localStorage.length);
+
+
+
+    for(var i in window.localStorage) {
+        var name = i;
+        var score1 = window.localStorage[i];
+        var entry = document.createElement('li');
+        entry.appendChild(document.createTextNode(name + ': ' + score1));
+        listscores.appendChild(entry);
+    }
+//    var firstname = document.getElementById('firstname').value;
+//var entry = document.createElement('li');
+// entry.appendChild(document.createTextNode(firstname));
+// list.appendChild(entry);
+
   });
 
   clearscores.addEventListener('click', () => {
-    localStorage.clear();
+    window.localStorage.clear();
   })
 
   goback.addEventListener('click', () => {
