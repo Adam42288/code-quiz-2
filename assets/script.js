@@ -291,23 +291,6 @@ var scoreStorage = window.localStorage.getItem("Scores")
     }
     
       });
-      
-      
-
-
-    // for(var i in scoreStorage) {
-    //     var name = scoreStorage[i].Initials;
-    //     var score1 = scoreStorage[i].Score;
-    //     var entry = document.createElement('li');
-    //     entry.appendChild(document.createTextNode(name + ': ' + score1));
-    //     listscores.appendChild(entry);
-    // }
-//    var firstname = document.getElementById('firstname').value;
-//var entry = document.createElement('li');
-// entry.appendChild(document.createTextNode(firstname));
-// list.appendChild(entry);
-
-//  });
 
   clearscores.addEventListener('click', () => {
     window.localStorage.clear();
